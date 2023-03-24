@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h1>Age Calculation Screen</h1>
+      <label>
+        You can <b>calculate your age</b> by following the steps on this screen.
+      </label>
+    </div>
+    <div>
+      <h2>Process Steps</h2>
+      <ol>
+        <li>Enter your date of birth.</li>
+        <li>Write your name.</li>
+        <li>Calculate your age!.</li>
+      </ol>
+    </div>
+
+    <div>
+      <h2>Process Section</h2>
+      <label for="birthday" style="color: #8b0000">
+        <b>Date of Birth:</b>
+      </label>
+      <br />
+      <input type="date" id="birthday" />
+      <br />
+      <input
+        id="flower"
+        type="text"
+        name="name"
+        placeholder="Please, write your name"
+        maxlength="15"
+        style="background-color: #fffdd0"
+      />
+      <br />
+      <button onclick="calculateAge()" style="background-color: #ffc0cb">
+        Calculate your age
+      </button>
+    </div>
+
+    <div>
+      <p id="result"></p>
+    </div>
+
+    <script>
+      function calculateAge() {
+        const birthday = new Date(document.getElementById("birthday").value);
+        /*
+        if(birthday=="Invalid Date"){
+          alert("Doğum Tarihi girin!");
+          throw new Error("my error message");
+        }
+        */
+        const today = new Date();
+        const ageInMilliseconds = today - birthday;
+        const ageInYears = Math.floor(ageInMilliseconds / 31557600000); // 1 yıl = 31,557,600 saniye
+        const input = document.getElementById("flower").value;
+        document.getElementById("result").innerHTML =
+          "Hi, "+input + "! your age: " + ageInYears;
+      }
+    </script>
+  </body>
+</html>
